@@ -1,0 +1,15 @@
+// 生成PNG图标文件
+const fs = require('fs');
+const path = require('path');
+
+// 创建一个简单的蓝色图标 - 这是一个小的PNG图标的完整Base64编码
+const iconBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAp1JREFUeF7tmk1LG1EUht9jUzR+YYJudCEUkdZFXFTwY9GNWxcK7rqxoH+gK38CQl36A9x1U/xadFMXIm5FFBRBiC7UlUlK0JDkmHuZMZmoSTrJnZmYub7LO++5z3nOmbn3zpCj+KP5zZGvCU+eHCHgDIDrAL4C+AFgh2uSFwBexojTqZ5Tc3Yzv2mVwDXiFID7AJ5zDToCgHfEdpXzMzObKb23lQDLfVW8XmUQ4DzgFYA7ifdyHyDfCJrL5s8BRVGKIyJgCrOPFtHWdgERV/FNKwE88lyDHQG+A7gJ4KfnACyCeQM0mwsYMUG+ETSXzQ/AECJzhUlxAY4JcE2gKWbIs5cjXpgIrwl4nQOOa7g7gLsDTmuE+XXhNF2aw3kHiIcAiwsXEQQtqDffY3VlE98+bR7UDY+MY/juBLo6W1Eqfcffv5vYK25gZekjyr9KahP0jBUwcPUGcq/GUWdEkM+/SBwmCER9fYD19Xl1vrnlHrI3B9DYaMDa/MLPHz+ptssXFVZAe0cfBm/14emTIWWYCkT9F1F7bNKA9vYcVpentREqDL3X+9Df34uBa5cU9smxDFZXP2B+/p2t72wBIhChAA1bW5IQUEC2AA3hCJAA7L4FEARCBwQk/CeAnm6qAl68mEBnV8tBLs3Df4t/sLD4XmWAp8/GMHwng6bmLBqsHbawS/fKXaA/m0Em05RIA/y7ANsExAVsE2DDCA8DYRIY4okQyyQof4eAcQpk02AYg9JnAukIlK5B6SxQ/h4gfRUmbZeOQ9J3geONUf5FSP5xVFyA9L9Dxy2QfR6gaSDfCOJuwDbENIXED6KcJyZVxWmkZUTkE4kGkx5HOXtQaiCOkbH/AOPfLh+RLPfUAAAAAElFTkSuQmCC';
+
+// 将Base64编码转换为Buffer
+const iconBuffer = Buffer.from(iconBase64, 'base64');
+
+// 保存图标文件
+const iconPath = path.join(__dirname, 'icon.png');
+fs.writeFileSync(iconPath, iconBuffer);
+
+console.log('图标文件已创建:', iconPath); 
