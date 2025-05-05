@@ -108,6 +108,7 @@ app.post('/api/auth/register', async (req, res) => {
       username,
       password: hashedPassword,
       avatar: '',
+      avatarData: null,
       createdAt: new Date()
     };
     
@@ -123,6 +124,7 @@ app.post('/api/auth/register', async (req, res) => {
         id: user.id,
         username: user.username,
         avatar: user.avatar,
+        avatarData: user.avatarData,
         createdAt: user.createdAt
       },
       token
@@ -164,6 +166,7 @@ app.post('/api/auth/login', async (req, res) => {
         id: user.id,
         username: user.username,
         avatar: user.avatar,
+        avatarData: user.avatarData,
         createdAt: user.createdAt
       },
       token
@@ -182,6 +185,7 @@ app.get('/api/auth/me', authenticate, async (req, res) => {
         id: req.user.id,
         username: req.user.username,
         avatar: req.user.avatar,
+        avatarData: req.user.avatarData,
         createdAt: req.user.createdAt
       }
     });
@@ -568,6 +572,58 @@ io.on('connection', (socket) => {
     }, 500);
   });
 
+  // 处理头像更新
+  socket.on('update-avatar', (data, callback) => {
+    try {
+      console.log(`用户 ${socket.username} (${socket.userId}) 请求更新头像`);
+      
+      // 验证请求是否来自合法用户
+      if (socket.userId !== data.userId) {
+        console.error('用户ID不匹配，拒绝更新头像');
+        if (callback) {
+          callback({
+            success: false,
+            message: '无权更新此用户头像'
+          });
+        }
+        return;
+      }
+      
+      // 查找用户
+      const user = findUserById(socket.userId);
+      if (!user) {
+        console.error('找不到用户，拒绝更新头像');
+        if (callback) {
+          callback({
+            success: false,
+            message: '用户不存在'
+          });
+        }
+        return;
+      }
+      
+      // 保存头像数据
+      user.avatarData = data.avatarData;
+      console.log(`用户 ${socket.username} 的头像已更新`);
+      
+      // 发送成功响应
+      if (callback) {
+        callback({
+          success: true,
+          message: '头像已成功更新'
+        });
+      }
+    } catch (error) {
+      console.error('更新头像时出错:', error);
+      if (callback) {
+        callback({
+          success: false,
+          message: '更新头像失败: ' + (error.message || '未知错误')
+        });
+      }
+    }
+  });
+
   // 处理消息发送
   socket.on('send-message', async (message) => {
     // 创建新消息
@@ -677,4 +733,4 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`服务器运行在端口: ${PORT}`);
-}); 
+});

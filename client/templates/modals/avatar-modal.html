@@ -1,0 +1,42 @@
+<!-- 头像选择模态框 -->
+<div id="avatarModal" class="modal-overlay" style="display: none;">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3>更换头像</h3>
+      <button id="closeAvatarModal" class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="avatar-preview-container">
+        <div id="avatarPreview" class="avatar-preview">预览区</div>
+      </div>
+      <div class="avatar-options">
+        <div class="avatar-section">
+          <h4>上传图片</h4>
+          <button id="uploadAvatarButton" class="button">选择图片</button>
+          <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+        </div>
+        <div class="avatar-section">
+          <h4>选择颜色</h4>
+          <div class="avatar-colors">
+            <div class="avatar-color" data-color="#1abc9c" style="background-color: #1abc9c;"></div>
+            <div class="avatar-color" data-color="#2ecc71" style="background-color: #2ecc71;"></div>
+            <div class="avatar-color" data-color="#3498db" style="background-color: #3498db;"></div>
+            <div class="avatar-color" data-color="#9b59b6" style="background-color: #9b59b6;"></div>
+            <div class="avatar-color" data-color="#e74c3c" style="background-color: #e74c3c;"></div>
+            <div class="avatar-color" data-color="#f39c12" style="background-color: #f39c12;"></div>
+            <div class="avatar-color" data-color="#16a085" style="background-color: #16a085;"></div>
+            <div class="avatar-color" data-color="#27ae60" style="background-color: #27ae60;"></div>
+            <div class="avatar-color" data-color="#2980b9" style="background-color: #2980b9;"></div>
+            <div class="avatar-color" data-color="#8e44ad" style="background-color: #8e44ad;"></div>
+            <div class="avatar-color" data-color="#c0392b" style="background-color: #c0392b;"></div>
+            <div class="avatar-color" data-color="#d35400" style="background-color: #d35400;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="cancelAvatarButton" class="button button-secondary">取消</button>
+      <button id="saveAvatarButton" class="button">保存</button>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,32 @@
+<!-- 聊天区域 -->
+<div class="chat-container">
+  <!-- 窗口标题栏 -->
+  <div class="title-bar">
+    <div class="window-controls">
+      <div class="window-control-button" id="minimizeButton">&#8211;</div>
+      <div class="window-control-button" id="maximizeButton">&#9633;</div>
+      <div class="window-control-button window-control-close" id="closeButton">&#10005;</div>
+    </div>
+  </div>
+  
+  <div class="chat-header">
+    <div class="chat-title">
+      <span id="chatName">群聊</span>
+      <span id="onlineStatus"></span>
+    </div>
+    <div class="chat-actions">
+      <!-- 按钮已移除 -->
+    </div>
+  </div>
+  
+  <button id="loadMoreMessages" class="load-more-button">加载更多消息</button>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-container">
+    <div class="input-actions">
+      <button class="emoji-button" id="emojiButton" title="选择表情">😊</button>
+      <button class="upload-button" id="uploadButton" title="发送图片">🖼️</button>
+    </div>
+    <textarea class="message-textarea" id="messageInput" placeholder="输入消息..."></textarea>
+    <button class="send-button" id="sendButton">发送</button>
+  </div>
+</div> 

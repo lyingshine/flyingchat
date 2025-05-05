@@ -1,0 +1,179 @@
+/* 登录和注册页面样式 */
+body, html, #app, #main-container {
+  background-color: white !important;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: var(--window-radius) !important;
+  overflow: hidden;
+}
+
+#loginPanel, #registerPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: relative;
+  border: none;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--window-radius) !important;
+  overflow: hidden;
+}
+
+/* 移除窗口标题栏背景 */
+.title-bar {
+  background-color: transparent !important;
+}
+
+/* 登录界面的窗口控制按钮 */
+#loginPanel .title-bar, #registerPanel .title-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+#loginPanel .window-control-button,
+#registerPanel .window-control-button {
+  color: var(--primary-color);
+}
+
+#registerPanel {
+  display: none;
+}
+
+.login-form {
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.login-form h2 {
+  margin-top: 0;
+  margin-bottom: 50px;
+  color: var(--primary-color);
+  font-size: 32px;
+  position: relative;
+  display: inline-block;
+}
+
+.login-form h2::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  position: absolute;
+  bottom: -8px;
+  left: 25%;
+  border-radius: 3px;
+}
+
+.input-group {
+  margin-bottom: 20px; /* 恢复输入框间距 */
+  width: 85%;
+  max-width: 320px;
+}
+
+.input-group:last-of-type {
+  margin-bottom: 30px; /* 调整最后一个输入框下方的间距 */
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border: 1px solid #eaedf3;
+  border-radius: var(--border-radius);
+  font-size: 15px;
+  transition: var(--transition);
+  background-color: #f9fafc;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(7, 193, 96, 0.15);
+  outline: none;
+  background-color: white;
+}
+
+.login-button {
+  background: var(--wx-green);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  width: 85%;
+  max-width: 320px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.login-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.6s ease;
+}
+
+.login-button:hover {
+  background-color: var(--wx-light-green);
+}
+
+.login-button:hover::after {
+  left: 100%;
+}
+
+.switch-form {
+  margin-top: 0;
+  color: var(--gray-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.switch-form:hover {
+  color: var(--primary-color);
+}
+
+.switch-form::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.switch-form:hover::after {
+  width: 100%;
+} 

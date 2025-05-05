@@ -2,14 +2,27 @@
 const fs = require('fs');
 const path = require('path');
 
-// 创建一个简单的蓝色图标 - 这是一个小的PNG图标的完整Base64编码
-const iconBase64 = 'iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAp1JREFUeF7tmk1LG1EUht9jUzR+YYJudCEUkdZFXFTwY9GNWxcK7rqxoH+gK38CQl36A9x1U/xadFMXIm5FFBRBiC7UlUlK0JDkmHuZMZmoSTrJnZmYub7LO++5z3nOmbn3zpCj+KP5zZGvCU+eHCHgDIDrAL4C+AFgh2uSFwBexojTqZ5Tc3Yzv2mVwDXiFID7AJ5zDToCgHfEdpXzMzObKb23lQDLfVW8XmUQ4DzgFYA7ifdyHyDfCJrL5s8BRVGKIyJgCrOPFtHWdgERV/FNKwE88lyDHQG+A7gJ4KfnACyCeQM0mwsYMUG+ETSXzQ/AECJzhUlxAY4JcE2gKWbIs5cjXpgIrwl4nQOOa7g7gLsDTmuE+XXhNF2aw3kHiIcAiwsXEQQtqDffY3VlE98+bR7UDY+MY/juBLo6W1Eqfcffv5vYK25gZekjyr9KahP0jBUwcPUGcq/GUWdEkM+/SBwmCER9fYD19Xl1vrnlHrI3B9DYaMDa/MLPHz+ptssXFVZAe0cfBm/14emTIWWYCkT9F1F7bNKA9vYcVpentREqDL3X+9Df34uBa5cU9smxDFZXP2B+/p2t72wBIhChAA1bW5IQUEC2AA3hCJAA7L4FEARCBwQk/CeAnm6qAl68mEBnV8tBLs3Df4t/sLD4XmWAp8/GMHwng6bmLBqsHbawS/fKXaA/m0Em05RIA/y7ANsExAVsE2DDCA8DYRIY4okQyyQof4eAcQpk02AYg9JnAukIlK5B6SxQ/h4gfRUmbZeOQ9J3geONUf5FSP5xVFyA9L9Dxy2QfR6gaSDfCOJuwDbENIXED6KcJyZVxWmkZUTkE4kGkx5HOXtQaiCOkbH/AOPfLh+RLPfUAAAAAElFTkSuQmCC';
+// 创建一个简单的SVG图标 - 微信风格的聊天图标
+const createIcon = () => {
+  const svgContent = `
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+    <rect width="24" height="24" rx="4" fill="#07C160"/>
+    <path d="M6.5,9.5 C6.5,8.672 7.172,8 8,8 C8.828,8 9.5,8.672 9.5,9.5 C9.5,10.328 8.828,11 8,11 C7.172,11 6.5,10.328 6.5,9.5 Z" fill="white"/>
+    <path d="M14.5,9.5 C14.5,8.672 15.172,8 16,8 C16.828,8 17.5,8.672 17.5,9.5 C17.5,10.328 16.828,11 16,11 C15.172,11 14.5,10.328 14.5,9.5 Z" fill="white"/>
+    <path d="M4,7 C4,5.343 5.343,4 7,4 L17,4 C18.657,4 20,5.343 20,7 L20,14 C20,15.657 18.657,17 17,17 L14.5,17 L12,20 L9.5,17 L7,17 C5.343,17 4,15.657 4,14 L4,7 Z" stroke="white" stroke-width="1.5" fill="none"/>
+  </svg>
+  `;
 
-// 将Base64编码转换为Buffer
-const iconBuffer = Buffer.from(iconBase64, 'base64');
+  // 保存SVG文件
+  const svgPath = path.join(__dirname, 'icon.svg');
+  fs.writeFileSync(svgPath, svgContent);
+  console.log('图标文件已创建:', svgPath);
 
-// 保存图标文件
-const iconPath = path.join(__dirname, 'icon.png');
-fs.writeFileSync(iconPath, iconBuffer);
+  // 简单的PNG转换 (这里只是一个基本示例)
+  // 在实际应用中你可能需要使用一个专门的库来转换SVG到PNG
+  const pngPath = path.join(__dirname, 'icon.png');
+  fs.writeFileSync(pngPath, svgContent);
+  console.log('图标文件已创建:', pngPath);
+}
 
-console.log('图标文件已创建:', iconPath); 
+createIcon(); 
